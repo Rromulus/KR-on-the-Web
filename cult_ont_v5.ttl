@@ -1,0 +1,443 @@
+@prefix : <http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix aat: <http://vocab.getty.edu/aat/> .
+@prefix dbc: <http://dbpedia.org/resource/Category:> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dbp: <http://dbpedia.org/property/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix base: <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/> .
+
+<http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/containsVenue
+
+:containsVenue rdf:type owl:ObjectProperty ;
+               
+               owl:inverseOf :hasAddress ;
+               
+               rdfs:domain :Address ;
+               
+               rdfs:range :Venue ;
+               
+               owl:propertyChainAxiom ( :hasCity
+                                      ) .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/hasAddress
+
+:hasAddress rdf:type owl:ObjectProperty ;
+            
+            rdfs:domain :Venue ;
+            
+            rdfs:range :Address .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/hasBeginDate
+
+:hasBeginDate rdf:type owl:ObjectProperty ;
+              
+              rdfs:domain :TimePeriod ;
+              
+              rdfs:range :BeginDate .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/hasCity
+
+:hasCity rdf:type owl:ObjectProperty .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/hasDescription
+
+:hasDescription rdf:type owl:ObjectProperty ;
+                
+                rdfs:domain :Event ;
+                
+                rdfs:range :Description .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/hasEndDate
+
+:hasEndDate rdf:type owl:ObjectProperty ;
+            
+            rdfs:domain :TimePeriod ;
+            
+            rdfs:range :EndDate .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/hasImage
+
+:hasImage rdf:type owl:ObjectProperty ;
+          
+          rdfs:domain :Event ;
+          
+          rdfs:range :Image .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/hasLongDescription
+
+:hasLongDescription rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:domain :Description ;
+                    
+                    rdfs:range :LongDescription .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/hasShortDescription
+
+:hasShortDescription rdf:type owl:ObjectProperty ;
+                     
+                     rdfs:domain :Description ;
+                     
+                     rdfs:range :ShortDescription .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/hasTimePeriod
+
+:hasTimePeriod rdf:type owl:ObjectProperty ;
+               
+               rdfs:domain :Event ;
+               
+               rdfs:range :TimePeriod .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/hasVenue
+
+:hasVenue rdf:type owl:ObjectProperty ;
+          
+          owl:inverseOf :inCity ;
+          
+          rdfs:domain dbo:City ;
+          
+          rdfs:range :Venue ;
+          
+          owl:propertyChainAxiom ( :hasCity
+                                 ) .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/inCity
+
+:inCity rdf:type owl:ObjectProperty ;
+        
+        rdfs:domain :Venue ;
+        
+        rdfs:range dbo:City .
+
+
+
+###  http://dbpedia.org/property/heldIn
+
+dbp:heldIn rdf:type owl:ObjectProperty ;
+           
+           owl:inverseOf dbp:hostsEvent ;
+           
+           rdfs:domain :Event ;
+           
+           rdfs:range :Venue .
+
+
+
+###  http://dbpedia.org/property/hostsEvent
+
+dbp:hostsEvent rdf:type owl:ObjectProperty ;
+               
+               rdfs:domain :Venue ;
+               
+               rdfs:range :Event .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/hasID
+
+:hasID rdf:type owl:DatatypeProperty ;
+       
+       rdfs:domain :Event ;
+       
+       rdfs:range xsd:string .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/hasStreetname
+
+:hasStreetname rdf:type owl:DatatypeProperty ;
+               
+               rdfs:domain :Address ;
+               
+               rdfs:range xsd:string .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/hasUrl
+
+:hasUrl rdf:type owl:DatatypeProperty ;
+        
+        rdfs:domain :Venue ;
+        
+        rdfs:range xsd:anyURI .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/hasZipcode
+
+:hasZipcode rdf:type owl:DatatypeProperty ;
+            
+            rdfs:domain :Address ;
+            
+            rdfs:range xsd:string .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/usesMediaSource
+
+:usesMediaSource rdf:type owl:DatatypeProperty ;
+                 
+                 rdfs:domain :Image ;
+                 
+                 rdfs:range xsd:string .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/usesThumbnail
+
+:usesThumbnail rdf:type owl:DatatypeProperty ;
+               
+               rdfs:domain :Image ;
+               
+               rdfs:range xsd:string .
+
+
+
+###  http://purl.org/dc/elements/1.1/title
+
+dc:title rdf:type owl:DatatypeProperty ;
+         
+         rdfs:domain :Event .
+
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#lat
+
+geo:lat rdf:type owl:DatatypeProperty ;
+        
+        rdfs:domain :Address ;
+        
+        rdfs:range xsd:string .
+
+
+
+###  http://www.w3.org/2003/01/geo/wgs84_pos#long
+
+geo:long rdf:type owl:DatatypeProperty ;
+         
+         rdfs:domain :Address ;
+         
+         rdfs:range xsd:string .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/Address
+
+:Address rdf:type owl:Class ;
+         
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :containsVenue ;
+                           owl:someValuesFrom :Venue
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasStreetname ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:string
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasZipcode ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:string
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty geo:lat ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:string
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty geo:long ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onDataRange xsd:string
+                         ] .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/BeginDate
+
+:BeginDate rdf:type owl:Class ;
+           
+           rdfs:subClassOf :TimePeriod ;
+           
+           owl:disjointWith :EndDate .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/Description
+
+:Description rdf:type owl:Class .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/EndDate
+
+:EndDate rdf:type owl:Class ;
+         
+         rdfs:subClassOf :TimePeriod .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/Event
+
+:Event rdf:type owl:Class ;
+       
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasDescription ;
+                         owl:someValuesFrom :Description
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty dbp:heldIn ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Venue
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasID ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onDataRange xsd:string
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty dc:title ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onDataRange xsd:string
+                       ] .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/Image
+
+:Image rdf:type owl:Class .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/LongDescription
+
+:LongDescription rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Description ;
+                 
+                 owl:disjointWith :ShortDescription .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/ShortDescription
+
+:ShortDescription rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Description .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/TimePeriod
+
+:TimePeriod rdf:type owl:Class .
+
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/Venue
+
+:Venue rdf:type owl:Class ;
+       
+       rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                owl:onProperty :hasAddress ;
+                                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                owl:onClass :Address
+                                              ]
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :inCity ;
+                                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                owl:onClass dbo:City
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty dbp:hostsEvent ;
+                         owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Event
+                       ] .
+
+
+
+###  http://dbpedia.org/ontology/City
+
+dbo:City rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://data.krw.d2s.labs.vu.nl/group10/cultural_ontology/Event1
+
+:Event1 rdf:type owl:NamedIndividual ;
+        
+        :hasID "9bb9a6fa-f06a-4fb5-8ff0-9d07f6e25f67"^^xsd:string ;
+        
+        dc:title "Amsterdamse School"^^xsd:string .
+
+
+
+
+###  Generated by the OWL API (version 4.2.1.20160306-0033) https://github.com/owlcs/owlapi
+
